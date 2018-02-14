@@ -78,7 +78,6 @@ class SFMap extends React.Component {
         .then((response) => response.json())
         .then((data) => {
             // prevent fetching empty data
-            console.log(data)
             if(data.vehicle !== undefined){
                 // update line data
                 if (this.state.ifLineEnabled) {
