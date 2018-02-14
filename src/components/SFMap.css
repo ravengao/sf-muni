@@ -1,0 +1,36 @@
+.neighborhoods {
+    fill:#aaa;
+    stroke: #fff;
+    stroke-width:1px;
+}
+.arteries {
+    stroke: #ff9b9b;;
+    stroke-width: 2px;
+    fill-opacity: 0;
+}
+.streets {
+    stroke: #ffffff;;
+    stroke-width: 0.5px;
+    fill-opacity: 0;
+}
+.freeways {
+    stroke: #d1da73;;
+    stroke-width: 2px;
+    fill-opacity: 0;
+}
+.vehicles {
+    fill: #00832c;
+    fill-opacity: 0.8;
+}
+.checkbox{
+    margin: 5px 10px;
+    display: inline-block;
+    font-size: 0.8em;
+}
+.btn {
+    margin: 8px 20px;
+    font-size: 0.8em;
+}
+.track {
+    stroke-width:0.5px;
+}
