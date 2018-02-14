@@ -1,6 +1,8 @@
 ## SF-MUNI Visualization
 
-This project is a web visualization system for displaying San Francisco MUNI vehicles locations and routes. It allows a list of interactions:
+This project is a web visualization system for displaying San Francisco MUNI vehicles locations and routes. The frameworks and tech-stack involved are: React, D3.js (v4) and ES6. 
+
+List of interactions implemented:
 1. Filter: Choose specific route checkboxes to filter the results. Allows multiple selection
 2. Checkall / Uncheck All route checkboxes
 3. Display the track path of the vehicle that just passes by
