@@ -10,9 +10,9 @@ List of interactions implemented:
 5. Mouse over vehicle points to see the routeTag and vehicle ID
 
 ## Sample
-![alt tag](https://github.com/ravengao/sf-muni/blob/master/sfmap01.jpg)
+![alt tag](https://github.com/ravengao/sf-muni/blob/master/sfmap1.jpg)
 
 ## Display Track Path:
-![alt tag](https://github.com/ravengao/sf-muni/blob/master/sfmap02.jpg)
+![alt tag](https://github.com/ravengao/sf-muni/blob/master/sfmap2.jpg)
 
 Data Source: NextBusXMLFeed
