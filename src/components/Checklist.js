@@ -72,19 +72,21 @@ class Checklist extends React.Component{
         this.props.onCheckedBoxes(this.state.checkedBoxes);
     }
     
+    toggleCheckAll = () => {
+        this.setState({
+            ifCheckedAll:!this.state.ifCheckedAll
+        })
+    }
+
     render(){
         const items = this.state.routeList
         const btnText = this.state.ifCheckedAll ? "Uncheck All" : "Check All";
         return(
-                <form onSubmit={this.handleFormSubmit}>
-                    {this.createCheckboxes(items)}<br/>
+            <form onSubmit={this.handleFormSubmit}>
+                {this.createCheckboxes(items)}<br/>
                 <button className="btn btn-default" type="submit"> Apply Filters</button>
-                <button className="btn btn-default" onClick={() => {
-                    this.setState({
-                        ifCheckedAll:!this.state.ifCheckedAll
-                    })
-                }}> {btnText}</button>
-                </form>
+                <button className="btn btn-default" onClick={this.toggleCheckAll}> {btnText}</button>
+            </form>
         )
     }
 }
