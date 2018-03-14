@@ -40,12 +40,35 @@ class SFMap extends React.Component {
     };
 
     componentDidMount(){
-        d3.queue()
-            .defer(d3.json,"data/neighborhoods.json")
-            .defer(d3.json,"data/arteries.json")
-            .defer(d3.json,"data/streets.json")
-            .defer(d3.json,"data/freeways.json")
-            .await(this.renderMap);  
+        const prom = new Promise((res, rej)=>{
+            res(
+                d3.queue()
+                    .defer(d3.json,"data/neighborhoods.json")
+                    .defer(d3.json,"data/arteries.json")
+                    .defer(d3.json,"data/streets.json")
+                    .defer(d3.json,"data/freeways.json")
+                    .await(this.renderMap)
+            )}
+        ).then(()=>{
+            this.fetchRouteData({
+                command:"routeConfig",
+                a:"sf-muni"
+            }) 
+            let params = {
+                command:"vehicleLocations",
+                a:"sf-muni",
+                t:"0"
+            }
+            // intervalTime can be set with different value
+            const intervalTime = 5000 //15000
+            this.interval = setInterval(()=>{
+                this.fetchVehicleData(params)
+            },intervalTime) 
+        }).catch((err)=>{
+            console.log(err)
+        })
+                
+ 
     }
 
     componentWillUnmount(){
@@ -177,7 +200,7 @@ class SFMap extends React.Component {
             .enter().append("path")
             .attr("class","freeways")
             .attr("d", path);     
-        
+        /*
         // get routeData, get color scheme
         // fetchVehicleData has to be done after map is rendered to prevent display mess      
         this.fetchRouteData({
@@ -194,6 +217,7 @@ class SFMap extends React.Component {
         this.interval = setInterval(()=>{
             this.fetchVehicleData(params)
         },intervalTime) 
+        */
     }
     
     renderVehicles = (vehicleData) => {
@@ -289,7 +313,7 @@ class SFMap extends React.Component {
         const enableLine = this.state.ifLineEnabled ? "Disable Track-line" : "Enable Track-line"
         return (
             <div className="App">
-                <Checklist onCheckedBoxes={this.handleRouteFilter}  />
+                <Checklist onCheckedBoxes={this.handleRouteFilter} routeColor={this.state.routeColor} />
                 <button className="btn btn-default" onClick={this.toggleLineDisplay}>{enableLine}</button>
                 <button className="btn btn-default" onClick={this.handleClearLine}> Clear Track-line</button><br/>
                 <svg ref={svgNode => this.svgNode = svgNode} width={width} height={height} />

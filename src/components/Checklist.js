@@ -5,7 +5,6 @@ import "./SFMap.css"
 class Checklist extends React.Component{
     constructor(props){
         super(props)
-        //this.checkedBoxes = new Set()
         this.state = {
             routeList:[],
             ifCheckedAll:true,
@@ -52,6 +51,7 @@ class Checklist extends React.Component{
     createCheckboxes = (items) => (
         items.map((d) => (
             <Checkbox
+                color={this.props.routeColor.get(d.tag)}
                 label={d.tag}
                 handleCheckboxChange={this.toggleCheckbox}
                 key={d.tag}

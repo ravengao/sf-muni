@@ -38,8 +38,11 @@ class Checkbox extends React.Component{
     }
     
     render(){
-        const { label } = this.props;
+        const { label,color } = this.props;
         const { isChecked } = this.state;
+        const boxStyle = {
+            color:`#`+color
+        }
         return (
             <div className="checkbox">
               
@@ -50,7 +53,7 @@ class Checkbox extends React.Component{
                     checked={isChecked}
                     onChange={this.toggleCheckbox}
                 /> 
-                <label>     
+                <label style={boxStyle}>     
                     {label}
                 </label>
                 
